@@ -24,7 +24,7 @@ function setup() {
        const qtips = document.getElementById('qtips').value;
        video.loadPixels();
        const image64 = video.canvas.toDataURL();
-       const data = {lat, lon, caption, qday, qgather, qnumpeople, qpasstime, qlearn, qtips, image64};
+       const data = { lat, lon, caption, qday, qgather, qnumpeople, qpasstime, qlearn, qtips, image64 };
        const options = {
            method: "POST",
            headers: {
@@ -33,7 +33,8 @@ function setup() {
            body: JSON.stringify(data)
        };
       const response = await fetch('/api', options);
-      const json = await response.json();
+      var json = await response.json();
+      console.log(json);
       console.log(data);
    });
 
@@ -41,6 +42,7 @@ function setup() {
    console.log('geolocation IS NOT available');
    }
 });
+
 }
    function draw() {      
      image(video, 0, 0, width, height);

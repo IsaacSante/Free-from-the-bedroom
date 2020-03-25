@@ -6,8 +6,9 @@ const tiles = L.tileLayer( tileURL, {attribution})
 tiles.addTo(mymap);
 mymap.options.maxZoom = 12;
 getData();
+
+
 async function getData() {
-   // var thePopup = false;
     const response = await fetch('/api');
     const data = await response.json();
      for (item of data){
@@ -17,13 +18,6 @@ async function getData() {
           var image = document.createElement('img');
           image.src = item.image64;
           image.alt = "Quarantine pics" 
-          console.log(image);
-    // root.append(image);
-    // document.body.append(root);
-    console.log(root);
-//     let txt = ` ${item.lat}°, ${item.lon}°,<br>
-//     ${dateString},
-//     <br><img src='${item.image64}'/>`
     let txt = `${dateString},<br> Days in quarantine: ${item.qday}, <br>
     Days since social gathering: ${item.qgather}, <br>
     # people quarantined with: ${item.qnumpeople}, <br>

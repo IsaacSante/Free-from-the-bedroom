@@ -8,7 +8,6 @@ app.listen(port, () => {
     console.log(`Starting server at ${port}`)
 });
 
-
 app.use(express.static('public'));
 app.use(express.json({ limit : '1mb' }));
 
@@ -41,4 +40,3 @@ response.json({
     longitude: data.lon,
 });
 });
-
